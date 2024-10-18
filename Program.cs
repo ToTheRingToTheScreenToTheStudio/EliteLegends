@@ -12,6 +12,7 @@ class Program
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.White);
+            Raylib.ClearBackground(Color.Red);
 
             Raylib.DrawText("Hello, world!", 12, 12, 20, Color.Black);
 
