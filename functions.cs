@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using Raylib_cs;
 
 namespace game
@@ -11,15 +14,15 @@ namespace game
     {
 
 
-        public static void drawAgeTextBox() 
-        { 
+        public static void drawAgeTextBox()
+        {
             Raylib.DrawRectangleRec(GlobalVars.ageTextBox, Color.LightGray);
 
             if (GlobalVars.mouseOnTextBox)
             {
                 Raylib.DrawRectangleLines((int)GlobalVars.ageTextBox.X, (int)GlobalVars.ageTextBox.Y, (int)GlobalVars.ageTextBox.Width, (int)GlobalVars.ageTextBox.Height, Color.Red);
             }
-            else 
+            else
             {
                 Raylib.DrawRectangleLines((int)GlobalVars.ageTextBox.X, (int)GlobalVars.ageTextBox.Y, (int)GlobalVars.ageTextBox.Width, (int)GlobalVars.ageTextBox.Height, Color.DarkGray);
             }
@@ -27,7 +30,7 @@ namespace game
             Raylib.DrawText(GlobalVars.age.ToString(), (int)GlobalVars.ageTextBox.X + 5, (int)GlobalVars.ageTextBox.Y + 8, 20, Color.Maroon);
         }
         public static void ageInputBoxLogic()
-        { 
+        {
 
             if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), GlobalVars.ageTextBox)) { GlobalVars.mouseOnTextBox = true; } else GlobalVars.mouseOnTextBox = false;
 
@@ -64,9 +67,6 @@ namespace game
             }
 
         }
-
-        
-
     }
 
 }

@@ -3,7 +3,7 @@ using Raylib_cs;
 
 public static class GlobalVars
 {
-    public static int screenWidth = 800;
+    public static int screenWidth = 640;
     public static int screenHeight = 450;
     public static Rectangle ageTextBox = new Rectangle(280, 76, 100, 30);
     public static int age = 0;
