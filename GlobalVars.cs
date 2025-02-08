@@ -9,4 +9,5 @@ public static class GlobalVars
     public static int age = 0;
     public static int digitCount = 0; // didnt want to make this a global var but if i put it inside the logic function int wont work lol
     public static bool mouseOnTextBox = false;
+    public static bool showDebug = false;
 }

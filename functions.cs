@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,18 @@ namespace game
     internal class Functions
     {
 
+        public static void DrawDebugInfo()
+        {
+            // Display the current FPS in the top left corner.
+            int fps = Raylib.GetFPS();
+            string fpsText = $"FPS: {fps}";
+            Raylib.DrawText(fpsText, 10, 10, 14, Color.Green);
+
+            // Optionally, add more debug info (for example, memory usage, entity count)
+            Vector2 mousePos = Raylib.GetMousePosition();
+            string mouseText = $"Mouse: {mousePos.X:0}, {mousePos.Y:0}";
+            Raylib.DrawText(mouseText, 10, 40, 14, Color.Green);
+        }
 
         public static void drawAgeTextBox()
         {

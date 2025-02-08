@@ -23,6 +23,14 @@ class Program
         
         while (!Raylib.WindowShouldClose())
         {
+
+            // Toggle debug overlay
+            if (Raylib.IsKeyPressed(KeyboardKey.F3))
+            {
+                GlobalVars.showDebug = !GlobalVars.showDebug;
+            }
+
+
             // current screen width / original screen width
             float scale = Math.Min((float) Raylib.GetScreenWidth() / GlobalVars.screenWidth, (float) Raylib.GetScreenHeight() / GlobalVars.screenHeight);
 
@@ -31,14 +39,15 @@ class Program
             Raylib.BeginTextureMode(target);
 
             string text = "Elite Legends!";
+            int textWidth = Raylib.MeasureText(text, 20); // Measure text width first
             Raylib.DrawText(text, 100, 20, 20, Color.Black);
 
-            //Draw a line under the game title
-            Raylib.DrawLine(340, 40, 478, 40, Color.Black);
+            // Draw a line under the game title using measured text width
+            Raylib.DrawLine(100, 40, 100 + textWidth, 40, Color.Black); // Changed from fixed values to dynamic calc
 
             Raylib.DrawText("Whats your age: ", 100, 80, 20, Color.Black);
 
-            Raylib.DrawText("adwa", 0, 0, 10, Color.Black);
+            
             Functions.ageInputBoxLogic();
             Functions.drawAgeTextBox();
             Raylib.EndTextureMode();
@@ -54,6 +63,13 @@ class Program
                 GlobalVars.screenHeight * scale);
             Vector2 origin = new(0, 0);
             float rotation = 0.0f;
+
+
+            // Draw debug overlay if toggled
+            if (GlobalVars.showDebug)
+            {
+                Functions.DrawDebugInfo();
+            }
 
             Raylib.DrawTexturePro(target.Texture, source, destination, origin, rotation, Color.White);
 
